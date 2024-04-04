@@ -1,7 +1,7 @@
 import { Menu } from "lucide-react"
-import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "../ui/sheet"
-import { Separator } from "../ui/separator"
-import { Button } from "../ui/button"
+import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "./ui/sheet"
+import { Separator } from "./ui/separator"
+import { Button } from "./ui/button"
 
 const MobileNav = () => {
   return (
