@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 
-const UserMenu = () => {
+const MainNavLinks = () => {
 
   const { user, logout } = useAuth0();
 
@@ -35,4 +35,4 @@ const UserMenu = () => {
   )
 }
 
-export default UserMenu
+export default MainNavLinks
