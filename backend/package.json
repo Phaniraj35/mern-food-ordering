@@ -4,7 +4,9 @@
   "description": "",
   "main": "./src/index.ts",
   "scripts": {
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "build:dev": "docker build -t mern-food-backend:0.0.1 -f Dockerfile.dev .",
+    "run:dev": "docker run -it -p 3000:3000 --name mern-food-backend-c -v ./:/app -v my-node-modules:/app/node_modules mern-food-backend:0.0.1"
   },
   "keywords": [],
   "author": "",
