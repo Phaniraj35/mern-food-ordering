@@ -1,5 +1,9 @@
 version: '3.9'
 
+networks:
+  food-ordering:
+    driver: bridge
+
 services:
   ui:
     image: ui:0.0.1
@@ -11,10 +15,12 @@ services:
       - 4000:4000
     volumes:
       - type: bind
-        source: ./frontend/src
-        target: /app/src
+        source: ./frontend
+        target: /app
     depends_on:
       - server
+    networks:
+      - food-ordering
   server:
     image: server:0.0.1
     container_name: server-c
@@ -32,6 +38,8 @@ services:
         target: /app/node_modules
     depends_on:
       - db
+    networks:
+      - food-ordering
   db:
     image: db:0.0.1
     container_name: db-c
@@ -42,4 +50,6 @@ services:
       - 27017:27017
     volumes:
       - ./db/data:/data
+    networks:
+      - food-ordering
 
