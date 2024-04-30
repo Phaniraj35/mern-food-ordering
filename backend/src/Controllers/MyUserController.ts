@@ -20,6 +20,31 @@ const createCurrentUser = async (req: Request, res: Response) => {
     }
 }
 
+const updateCurrentUser = async (req: Request, res: Response) => {
+    try {
+        const { name, city, addressLine, country } = req.body;
+
+        const user = await User.findById(req?.userId);
+
+        if (!user) {
+            return res.status(404).json({ message: 'Error: User not found'})
+        }
+
+        user.addressLine1 = addressLine;
+        user.country = country;
+        user.city = city;
+        user.name = name;
+
+        await user.save();
+
+        return res.send(user);
+    } catch(error) {
+        console.log(error, "while updating profile");
+        return res.status(500).json({ message: 'Error occured while updating profile.'})
+    }
+}
+
 export default {
-    createCurrentUser
+    createCurrentUser,
+    updateCurrentUser
 }
